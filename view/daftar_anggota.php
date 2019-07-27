@@ -8,19 +8,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <link rel="icon" type="image/jpeg" href="../assets/img/usericon.jpg" /> 
 
-  <title>SB Admin 2 - Register</title>
+  <title>Pendaftaran Anggota - Asosiasi Web Programmer</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
 <body class="bg-gradient-primary">
+
+  <?php
+  
+  include '../controller/koneksi.php';
+
+  session_start();
+
+  $posisi = @$_SESSION['nama_posisi'];
+
+  // Cek apakah user masih dalam keadaan login atau sudah ter-logout
+
+    switch ($posisi) {
+
+      case "Anggota":
+        header('location:anggota/');
+        break;
+      
+      case "Sekretariat":
+        header('location:sekretariat/');
+        break;
+      
+      case "Ketua":
+        header('location:ketua/');
+        break;
+      
+      case "Admin":
+        header('location:admin/');
+        break;
+      
+      default:
+
+    }
+
+  ?>
 
   <div class="container">
 
@@ -28,13 +63,13 @@
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
-          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-5 d-none d-lg-block" style="background: url(../assets/img/dts2.jpg);background-position: center;background-size: cover;"></div>
           <div class="col-lg-7">
             <div class="p-5">
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Registrasi Anggota Asosiasi!</h1>
               </div>
-              <form class="user" action="controller/registrasi.php" method="post">
+              <form class="user" action="../controller/registrasi.php" method="post">
                 <div class="form-group row">
                   <div class="col-sm-12">
                     <input type="text" class="form-control form-control-user" name="nik" placeholder="NIK">
@@ -62,10 +97,10 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" name="password" placeholder="Password">
+                    <input type="password" class="form-control form-control-user" name="password1" placeholder="Password">
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" name="password" placeholder="Repeat Password">
+                    <input type="password" class="form-control form-control-user" name="password2" placeholder="Ulangi Password">
                   </div>
                 </div>
                <button type="submit" class="btn btn-primary btn-user btn-block">
@@ -75,10 +110,10 @@
               </form>
               <hr>
               <div class="text-center">
-                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                <a class="small" href="#">Lupa Password?</a>
               </div>
               <div class="text-center">
-                <a class="small" href="login.html">Already have an account? Login!</a>
+                <a class="small" href="login.php">Sudah punya akun? Login disini!</a>
               </div>
             </div>
           </div>
@@ -89,14 +124,14 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script src="../assets/js/sb-admin-2.min.js"></script>
 
 </body>
 
